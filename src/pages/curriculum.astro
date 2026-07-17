@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
+---
+
+<Base title="Curriculum" path="/curriculum" description="Tampa Tower Academy's K–8 curriculum is aligned to Florida B.E.S.T. Standards and integrates faith, character, and rigorous academics. See a sample lesson.">
+  <section class="band-navy">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow" style="color: var(--gold-light)">Curriculum</p>
+      <h1>Rigorous, standards-aligned, and full of meaning.</h1>
+      <p class="lead" style="color: rgba(247,245,239,0.85)">
+        Our K–8 curriculum is aligned to the Florida B.E.S.T. Standards and taught in a
+        multi-age classroom where children are grouped by skill, not by age.
+      </p>
+    </div>
+  </section>
+
+  <!-- Curriculum showcase -->
+  <section>
+    <div class="wrap showcase">
+      <div class="cover-wrap">
+        <img src="/images/curriculum-cover-grade7.jpg" alt="ELA Bible, Grade 7, Student Edition Unit 1 — Tampa Tower Academy curriculum" class="cover-shot" width="1000" height="1328" />
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Our curriculum</p>
+        <h2>Real ELA skills, taught through Bible narratives.</h2>
+        <p>
+          Our curriculum empowers students to master essential <strong>Reading, Vocabulary,
+          and Writing</strong> skills through the rich literary tradition of Bible narratives —
+          while remaining fully aligned with Florida's B.E.S.T. Standards.
+        </p>
+        <ul class="ela-list">
+          <li>Reading comprehension &amp; fluency</li>
+          <li>Vocabulary &amp; language study</li>
+          <li>Writing &amp; composition</li>
+        </ul>
+        <p class="caption">Shown: <em>ELA Bible — Grade 7, Student Edition, Unit 1.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid grid-3">
+      <article class="card">
+        <h3>Florida B.E.S.T. aligned</h3>
+        <p>Every lesson maps to specific Benchmarks for Excellent Student Thinking, so your child stays on track with state standards.</p>
+      </article>
+      <article class="card">
+        <h3>Skill-based grouping</h3>
+        <p>In our K–8 multi-age classroom we group by ability and practice opportunity, so no child is bored and no child is lost.</p>
+      </article>
+      <article class="card">
+        <h3>Faith-integrated</h3>
+        <p>Language, character, wisdom, and truth are drawn together — classic learning woven with a biblical foundation.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Curriculum artwork -->
+  <section class="band-navy">
+    <div class="wrap wrap-narrow center">
+      <figure class="art">
+        <img src="/images/eden-temptation.jpg" alt="Illustration of the Garden of Eden from Tampa Tower Academy's ELA Bible curriculum" width="1376" height="768" loading="lazy" />
+        <figcaption>Original artwork from our ELA Bible curriculum brings each narrative to life.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Sample lesson -->
+  <section class="band-gold">
+    <div class="wrap">
+      <div class="wrap-narrow" style="margin-inline:auto">
+        <p class="eyebrow center">A look inside</p>
+        <h2 class="center">Sample lesson: "Noah and the Big Boat"</h2>
+        <p class="lead center">A kindergarten English Language Arts lesson — one example of how a class runs.</p>
+      </div>
+
+      <div class="lesson">
+        <dl class="lesson-meta">
+          <div><dt>Grade</dt><dd>Kindergarten</dd></div>
+          <div><dt>Subject</dt><dd>English Language Arts</dd></div>
+          <div><dt>Duration</dt><dd>45 minutes</dd></div>
+          <div><dt>Standards</dt><dd>Florida B.E.S.T. ELA</dd></div>
+        </dl>
+
+        <h3>Lesson structure</h3>
+        <ol class="steps">
+          <li><strong>Introduction</strong> — warm-up discussion that activates what students already know.</li>
+          <li><strong>Read-aloud</strong> — a narrative poem shared together, building fluency and a love of story.</li>
+          <li><strong>Discussion</strong> — guided questions on vocabulary and figurative language.</li>
+          <li><strong>Activity</strong> — students choose narrative drawing &amp; writing, or a craft-based retelling.</li>
+          <li><strong>Closing</strong> — reflection and a musical warm-up that ties the lesson together.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="center">
+    <div class="wrap wrap-narrow stack">
+      <h2>Want to see the full curriculum?</h2>
+      <p class="lead">Detailed grade-by-grade curriculum guides are being prepared and will be published here soon.</p>
+      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .showcase { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 46rem) { .showcase { grid-template-columns: 0.85fr 1.15fr; } }
+  .cover-wrap { display: flex; justify-content: center; }
+  .cover-shot {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    transform: rotate(-1.5deg);
+  }
+  .ela-list { list-style: none; padding: 0; margin: 0.5rem 0; display: grid; gap: 0.6rem; }
+  .ela-list li { position: relative; padding-left: 1.75rem; }
+  .ela-list li::before {
+    content: '';
+    position: absolute; left: 0; top: 0.4em;
+    width: 1rem; height: 1rem;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px var(--white), 0 0 0 1px var(--gold);
+  }
+  .caption { font-size: 0.9rem; color: var(--muted); }
+
+  .art { margin: 0; }
+  .art img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 3px solid var(--gold); }
+  .art figcaption { margin-top: 1rem; color: rgba(247, 245, 239, 0.82); font-family: var(--font-serif); font-size: 1.1rem; }
+
+  .lesson { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: var(--shadow); margin-top: 2rem; }
+  .lesson-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; margin: 0 0 2rem; padding: 0 0 1.5rem; border-bottom: 1px solid var(--line); }
+  @media (min-width: 40rem) { .lesson-meta { grid-template-columns: repeat(4, 1fr); } }
+  .lesson-meta dt { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700; }
+  .lesson-meta dd { margin: 0.2rem 0 0; font-family: var(--font-serif); font-size: 1.1rem; color: var(--navy-dark); }
+  .steps { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.75rem; }
+  .steps li { padding-left: 0.35rem; }
+</style>

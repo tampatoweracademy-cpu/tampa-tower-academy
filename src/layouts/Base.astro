@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title = 'Tampa Tower Academy',
+  description = 'A Bible-based K–8 academy in Tampa, Florida. 100% tuition-free through the PEP scholarship with Step Up For Students. Building strong readers, confident thinkers, and kind leaders.',
+  path = '/',
+} = Astro.props;
+
+const site = Astro.site?.href.replace(/\/$/, '') ?? 'https://www.tampatower.org';
+const canonical = site + path;
+const fullTitle = path === '/' ? `${title} — Bible-based K–8 in Tampa, FL` : `${title} — Tampa Tower Academy`;
+
+// Structured data helps the school surface in local search results.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Tampa Tower Academy',
+  alternateName: 'Tampa Tower',
+  url: site,
+  logo: `${site}/images/logo.png`,
+  email: 'support@tampatower.org',
+  telephone: '+1-813-406-0306',
+  description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Tampa',
+    addressRegion: 'FL',
+    addressCountry: 'US',
+  },
+  sameAs: [
+    'https://www.facebook.com/', // TODO: replace with the school's Facebook page URL
+    'https://www.instagram.com/', // TODO: replace with the school's Instagram URL
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/images/logo.png" />
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tampa Tower Academy" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/images/logo.png`} />
+    <meta name="twitter:card" content="summary" />
+
+    <meta name="theme-color" content="#12293e" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <!-- Cloudflare Web Analytics — cookie-free, no banner needed.
+         After deploying, paste your token from the Cloudflare dashboard
+         (Analytics → Web Analytics) into data-cf-beacon below and uncomment. -->
+    <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

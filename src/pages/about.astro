@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
+---
+
+<Base title="About" path="/about" description="Tampa Tower Academy is a Bible-based K–8 academy in Tampa, Florida. Led by educators with 30+ years of combined Bible-education experience, we blend rigorous, Florida B.E.S.T.–aligned academics with faith and character.">
+  <section class="band-navy">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow" style="color: var(--gold-light)">About us</p>
+      <h1>More than educators — mentors, parents, and Bible-based guides.</h1>
+      <p class="lead" style="color: rgba(247,245,239,0.85)">
+        If you're seeking an education that protects your child's values, strengthens their
+        spirituality, and surrounds them with a positive community, we're here to help.
+      </p>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section>
+    <div class="wrap wrap-narrow stack">
+      <p class="eyebrow">Why choose Tampa Tower?</p>
+      <h2>A Bible-based education that partners with your family.</h2>
+      <p>
+        We provide a Bible-based ELA curriculum that aligns seamlessly with Florida's B.E.S.T.
+        Standards. At Tampa Tower Academy we are more than just educators — we are mentors,
+        parents, and Bible-based guides committed to helping every child grow in knowledge,
+        character, and faith.
+      </p>
+    </div>
+
+    <div class="wrap grid grid-2 mt-2">
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h6a3 3 0 0 1 3 3v11a2.5 2.5 0 0 0-2.5-2.5H3Z"/><path d="M21 5h-6a3 3 0 0 0-3 3v11a2.5 2.5 0 0 1 2.5-2.5H21Z"/></svg>
+        </span>
+        <h3>Teach your own children</h3>
+        <p>Prefer to lead your child's learning at home? We give you all the tools you need to
+        succeed — curriculum, structure, and ongoing support.</p>
+      </article>
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+        </span>
+        <h3>Connect with a certified instructor</h3>
+        <p>Prefer expert guidance? Partner with one of our certified instructors who bring the
+        curriculum to life for your child.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="band-gold">
+    <div class="wrap">
+      <div class="wrap-narrow" style="margin-inline:auto">
+        <p class="eyebrow center">Experience &amp; heart</p>
+        <h2 class="center">Leadership you can trust with your child.</h2>
+        <p class="center">
+          As parents ourselves, we understand the importance of nurturing the whole child —
+          academically, emotionally, and spiritually.
+        </p>
+      </div>
+      <div class="stats mt-2">
+        <div class="stat">
+          <span class="num">30+</span>
+          <span class="lbl">years of combined experience in Bible education</span>
+        </div>
+        <div class="stat">
+          <span class="num">3</span>
+          <span class="lbl">years as principal &amp; assistant principal in a local K–12 institution</span>
+        </div>
+        <div class="stat">
+          <span class="num">K–8</span>
+          <span class="lbl">focused on the whole child — mind, heart, and faith</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section>
+    <div class="wrap wrap-narrow stack">
+      <p class="eyebrow">How we help every child grow</p>
+      <h2>Early support, personalized to your child.</h2>
+      <p>
+        We recognize the challenges many students face today, especially in reaching
+        grade-level proficiency in reading, writing, and math. That's why we use frequent
+        assessments to identify learning gaps early and provide targeted, personalized support.
+      </p>
+      <p>
+        But we don't stop there. We partner with families — equipping them with tools to
+        reinforce learning at home and involving them meaningfully in school life.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="band-navy">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow" style="color: var(--gold-light)">Our mission</p>
+      <h2 style="color:var(--white)">A safe, engaging, values-driven environment.</h2>
+      <p class="lead" style="color: rgba(247,245,239,0.85)">
+        We blend rigorous academics with Bible principles so students grow not only in intellect,
+        but in faith and purpose. We help every child:
+      </p>
+      <ul class="mission-list">
+        <li>Develop strong social and emotional regulation</li>
+        <li>Use technology responsibly</li>
+        <li>Connect their learning to real-life goals and moral values</li>
+      </ul>
+      <p style="color: rgba(247,245,239,0.85)">
+        Our goal is to help students live meaningful lives that bring honor to Jehovah.
+      </p>
+    </div>
+  </section>
+
+  <!-- Deuteronomy verse -->
+  <section class="band-gold">
+    <div class="wrap wrap-narrow center">
+      <figure class="verse">
+        <blockquote>
+          Deuteronomy 6:6-7 reminds us to diligently teach God's words to our children
+          throughout the day.
+        </blockquote>
+        <figcaption>
+          In today's busy world, putting that counsel into practice can be a challenge —
+          our curriculum partners with you to make that vital goal a reality.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="center">
+    <div class="wrap wrap-narrow stack">
+      <h2>Come see what we're building.</h2>
+      <p class="lead">We'd love to tell you more and answer your questions.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a>
+        <a class="btn btn-outline" href="/contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .stats { display: grid; gap: 1.5rem; }
+  @media (min-width: 46rem) { .stats { grid-template-columns: repeat(3, 1fr); } }
+  .stat {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .stat .num {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--gold-dark);
+    margin-bottom: 0.5rem;
+  }
+  .stat .lbl { color: var(--muted); font-size: 0.98rem; }
+
+  .mission-list { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.85rem; }
+  .mission-list li { position: relative; padding-left: 2rem; color: var(--cream); }
+  .mission-list li::before {
+    content: '';
+    position: absolute; left: 0; top: 0.4em;
+    width: 1rem; height: 1rem;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px var(--navy-dark);
+  }
+
+  .verse { margin: 0; }
+  .verse blockquote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    line-height: 1.4;
+    color: var(--navy-dark);
+    position: relative;
+  }
+  .verse blockquote::before {
+    content: '\201C';
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 0.2;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .verse figcaption { margin-top: 1.25rem; color: var(--muted); font-size: 1.05rem; max-width: 46ch; margin-inline: auto; }
+
+  .cta-row { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+</style>

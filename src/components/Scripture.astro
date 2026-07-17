@@ -1,0 +1,131 @@
+---
+// Rotating scripture element. All verses render server-side (good for SEO and
+// no-JS); a small script cross-fades between them. Verses are drawn from the
+// school's own materials.
+const verses = [
+  { text: 'And all your sons will be taught by Jehovah, and the peace of your sons will be abundant.', ref: 'Isaiah 54:13' },
+  { text: 'Train a boy in the way he should go; even when he grows old he will not depart from it.', ref: 'Proverbs 22:6' },
+  { text: 'A wise person listens and takes in more instruction; a man of understanding acquires skillful direction.', ref: 'Proverbs 1:5' },
+  { text: 'Safeguard practical wisdom and thinking ability; they will give you life and be an adornment for your neck.', ref: 'Proverbs 3:21, 22' },
+  { text: 'Continue applying yourself to public reading… be absorbed in these things, so that your advancement may be plainly seen by all people.', ref: '1 Timothy 4:13, 15' },
+];
+---
+
+<section class="band-navy scripture" data-scripture aria-roledescription="carousel" aria-label="Scripture">
+  <div class="wrap wrap-narrow center">
+    <p class="eyebrow" style="color: var(--gold-light)">Our foundation</p>
+    <p class="intro">
+      We want children to learn <strong>language, character, wisdom, and truth</strong>
+      from the greatest library ever given — the 66 books of the Bible.
+    </p>
+
+    <div class="verses">
+      {verses.map((v, i) => (
+        <figure class="verse" data-verse={i} aria-hidden={i !== 0 ? 'true' : 'false'} style={i !== 0 ? 'opacity:0' : ''}>
+          <blockquote>{v.text}</blockquote>
+          <figcaption>{v.ref}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="dots" role="tablist" aria-label="Choose a scripture">
+      {verses.map((_, i) => (
+        <button class="dot" type="button" data-dot={i} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-label={`Scripture ${i + 1} of ${verses.length}`}></button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scripture { position: relative; }
+  .intro { max-width: 40ch; margin: 0 auto 2rem; color: rgba(247, 245, 239, 0.82); }
+  .intro strong { color: var(--gold-light); }
+
+  /* All verses share one grid cell → container is as tall as the longest verse,
+     so there's no layout jump when they cross-fade. */
+  .verses { display: grid; margin-bottom: 1.75rem; }
+  .verse {
+    grid-area: 1 / 1;
+    margin: 0;
+    transition: opacity 0.7s ease;
+  }
+  .verse blockquote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 3vw, 1.95rem);
+    line-height: 1.4;
+    color: var(--cream);
+    position: relative;
+  }
+  .verse blockquote::before {
+    content: '\201C';
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 0.2;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .verse figcaption {
+    margin-top: 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .dots { display: flex; gap: 0.6rem; justify-content: center; }
+  .dot {
+    width: 10px; height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .dot[aria-selected='true'] { background: var(--gold); transform: scale(1.15); }
+  .dot:hover { background: var(--gold-light); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .verse { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-scripture]').forEach((root) => {
+    const verses = Array.from(root.querySelectorAll('.verse'));
+    const dots = Array.from(root.querySelectorAll('.dot'));
+    if (verses.length < 2) return;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let idx = 0;
+    let timer;
+
+    const show = (n) => {
+      verses.forEach((v, i) => {
+        const on = i === n;
+        v.style.opacity = on ? '1' : '0';
+        v.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+      dots.forEach((d, i) => d.setAttribute('aria-selected', i === n ? 'true' : 'false'));
+      idx = n;
+    };
+
+    const start = () => {
+      if (timer) clearInterval(timer);
+      if (!reduce) timer = window.setInterval(() => show((idx + 1) % verses.length), 7000);
+    };
+
+    dots.forEach((d, i) =>
+      d.addEventListener('click', () => {
+        show(i);
+        start(); // reset the timer so a manual pick gets its full dwell
+      })
+    );
+
+    start();
+  });
+</script>

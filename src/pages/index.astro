@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import Scripture from '../components/Scripture.astro';
+const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
+---
+
+<Base path="/">
+  <!-- Hero -->
+  <section class="hero band-navy">
+    <div class="wrap hero-inner">
+      <img src="/images/logo.png" alt="Tampa Tower Academy crest" width="150" height="150" class="hero-logo" />
+      <p class="eyebrow" style="color: var(--gold-light)">Tampa, Florida · Grades K–8</p>
+      <h1>Preparing children for life —<br />not just the state test.</h1>
+      <p class="lead">
+        Tampa Tower Academy is a Bible-based academy building strong readers,
+        confident thinkers, and kind leaders through real skills and real learning every day.
+      </p>
+      <p class="tuition-flag">100% Tuition-Free · Funded through the PEP scholarship</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a>
+        <a class="btn btn-ghost" href="/curriculum">Explore our curriculum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value props -->
+  <section>
+    <div class="wrap">
+      <div class="center" style="max-width: 44rem; margin-inline: auto;">
+        <p class="eyebrow">Why families choose us</p>
+        <h2>An education built around your child</h2>
+      </div>
+      <div class="grid grid-3 mt-2">
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6a2 2 0 0 1 2-2h8l6 6v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v6h6"/></svg>
+          </span>
+          <h3>Grouped by skill, not by age</h3>
+          <p>Kids develop on different timelines. In our K–8 multi-age classroom we group by skill, so every child works at the right level and gets the right education.</p>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M21 8v6"/><path d="M7 10v5c0 1 2 3 5 3s5-2 5-3v-5"/></svg>
+          </span>
+          <h3>Engaged, not just managed</h3>
+          <p>Students are far less likely to disengage when the work meets them where they are. We match instruction and assignments to each learner.</p>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.65 12 21 12 21Z"/></svg>
+          </span>
+          <h3>Character and truth</h3>
+          <p>We teach language, character, and wisdom alongside academics — forming kind leaders, not just strong test-takers.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tuition-free explainer -->
+  <section class="band-gold">
+    <div class="wrap wrap-narrow center stack">
+      <p class="eyebrow">Affordability</p>
+      <h2>Genuinely tuition-free for eligible families</h2>
+      <p class="lead">
+        Tampa Tower Academy is funded through Florida's Personalized Education Program (PEP)
+        scholarship with Step Up For Students. There are no application fees and no registration fees —
+        just enrollment.
+      </p>
+      <p>
+        <a class="btn btn-outline" href="/programs">How the scholarship works</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Faith / mission — rotating scripture drawn from the school's materials -->
+  <Scripture />
+
+  <!-- Approved provider band -->
+  <section>
+    <div class="wrap provider">
+      <div>
+        <p class="eyebrow">Officially recognized</p>
+        <h2>An approved Step Up For Students provider</h2>
+        <p class="lead">
+          Tampa Tower Academy is an approved provider on the Step Up For Students
+          EMA Marketplace — so scholarship funds can be used for enrollment with us.
+        </p>
+        <a class="btn btn-outline" href="/contact">Talk to us about enrolling</a>
+      </div>
+      <img src="/images/step-up-badge.svg" alt="Approved Provider — Step Up For Students EMA Marketplace" class="badge-img" width="220" height="220" />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="band-navy center">
+    <div class="wrap wrap-narrow stack">
+      <h2>Ready to give your child the right start?</h2>
+      <p class="lead">Enrollment takes just a few minutes. We'd love to meet your family.</p>
+      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: clamp(3rem, 7vw, 5.5rem); }
+  .hero-inner { text-align: center; max-width: 46rem; margin-inline: auto; }
+  .hero-logo { margin: 0 auto 1.25rem; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35)); }
+  .hero h1 { color: var(--white); }
+  .tuition-flag {
+    display: inline-block;
+    margin: 0.5rem 0 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    color: var(--gold-light);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .cta-row { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+
+  .provider { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 46rem) { .provider { grid-template-columns: 1.5fr 1fr; } }
+</style>

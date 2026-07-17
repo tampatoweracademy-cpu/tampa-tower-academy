@@ -1,0 +1,16 @@
+# build output
+dist/
+# dependencies
+node_modules/
+# generated types
+.astro/
+# environment variables
+.env
+.env.production
+# logs
+npm-debug.log*
+# macOS / editor cruft
+.DS_Store
+Thumbs.db
+# raw image drop-off (originals live here; optimized copies go in public/images)
+incoming/

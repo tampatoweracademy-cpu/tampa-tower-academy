@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
+---
+
+<Base title="Contact" path="/contact" description="Contact Tampa Tower Academy in Tampa, Florida. Email support@tampatower.org or call (813) 406-0306.">
+  <section class="band-navy">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow" style="color: var(--gold-light)">Contact</p>
+      <h1>We'd love to hear from you.</h1>
+      <p class="lead" style="color: rgba(247,245,239,0.85)">
+        Questions about enrollment, the scholarship, or a school visit? Reach out any time.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap contact-grid">
+      <div class="stack">
+        <h2>Get in touch</h2>
+        <ul class="details">
+          <li>
+            <span class="k">Email</span>
+            <a href="mailto:support@tampatower.org">support@tampatower.org</a>
+          </li>
+          <li>
+            <span class="k">Phone</span>
+            <a href="tel:+18134060306">(813) 406-0306</a>
+          </li>
+          <li>
+            <span class="k">Location</span>
+            <span>Tampa, Florida</span>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p class="hint">Social links above are placeholders — send me the exact page URLs and I'll wire them in.</p>
+      </div>
+
+      <aside class="enroll-card">
+        <h2>Ready to enroll?</h2>
+        <p>Enrollment takes just a few minutes through our secure form. No application or registration fees.</p>
+        <a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Open enrollment form</a>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid { display: grid; gap: 2rem; }
+  @media (min-width: 46rem) { .contact-grid { grid-template-columns: 1.2fr 1fr; align-items: start; } }
+  .details { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; }
+  .details li { display: grid; gap: 0.15rem; }
+  .details .k { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700; }
+  .details a, .details span:not(.k) { font-size: 1.15rem; font-family: var(--font-serif); color: var(--navy-dark); text-decoration: none; }
+  .details a:hover { color: var(--gold-dark); }
+  .social { display: flex; gap: 1rem; }
+  .social a { font-weight: 600; }
+  .hint { font-size: 0.85rem; color: var(--muted); }
+  .enroll-card { background: var(--navy-dark); color: var(--cream); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-lg); }
+  .enroll-card h2 { color: var(--white); }
+  .enroll-card p { color: rgba(247, 245, 239, 0.85); }
+</style>

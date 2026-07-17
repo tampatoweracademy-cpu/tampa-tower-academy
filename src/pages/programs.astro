@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
+---
+
+<Base title="Programs" path="/programs" description="Tampa Tower Academy programs — tuition-free K–8 education funded through Florida's PEP scholarship with Step Up For Students.">
+  <section class="band-navy">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow" style="color: var(--gold-light)">Programs &amp; enrollment</p>
+      <h1>Tuition-free K–8, funded by scholarship.</h1>
+      <p class="lead" style="color: rgba(247,245,239,0.85)">
+        Tampa Tower Academy is an approved provider on the Step Up For Students EMA Marketplace.
+        Eligible families can attend at no cost through Florida's Personalized Education Program (PEP).
+      </p>
+    </div>
+  </section>
+
+  <!-- Two ways to learn -->
+  <section>
+    <div class="wrap wrap-narrow center" style="margin-bottom:2rem">
+      <p class="eyebrow">Two ways to learn</p>
+      <h2>Choose the path that fits your family.</h2>
+      <p class="lead">
+        Whether you prefer to teach your own children or connect with one of our certified
+        instructors, we provide all the tools you need to succeed — built on a Bible-based ELA
+        curriculum aligned with Florida's B.E.S.T. Standards.
+      </p>
+    </div>
+    <div class="wrap grid grid-2">
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h6a3 3 0 0 1 3 3v11a2.5 2.5 0 0 0-2.5-2.5H3Z"/><path d="M21 5h-6a3 3 0 0 0-3 3v11a2.5 2.5 0 0 1 2.5-2.5H21Z"/></svg>
+        </span>
+        <h3>Teach your own children</h3>
+        <p>Lead your child's learning at home with our full curriculum, structure, and support behind you.</p>
+      </article>
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+        </span>
+        <h3>Connect with a certified instructor</h3>
+        <p>Partner with one of our certified instructors who bring the curriculum to life for your child.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band-gold">
+    <div class="wrap wrap-narrow">
+      <h2>How the scholarship works</h2>
+      <ol class="flow">
+        <li>
+          <h3>Apply with Step Up For Students</h3>
+          <p>Families apply for the PEP scholarship through Step Up For Students. Once approved, funds are held in an education account for your child.</p>
+        </li>
+        <li>
+          <h3>Choose Tampa Tower Academy</h3>
+          <p>Because we're an approved provider on the EMA Marketplace, your scholarship can be used toward enrollment with us.</p>
+        </li>
+        <li>
+          <h3>Enroll your child</h3>
+          <p>Complete our short enrollment form. There are no application fees and no registration fees.</p>
+        </li>
+      </ol>
+
+      <div class="note">
+        <strong>Program details are being finalized.</strong>
+        <p>Full information on grade levels, schedule, class structure, and what a school day looks
+        like will be published here shortly. Have a question now? <a href="/contact">Reach out</a> —
+        we're happy to help.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-navy center">
+    <div class="wrap wrap-narrow stack">
+      <img src="/images/step-up-badge.svg" alt="Approved Provider — Step Up For Students EMA Marketplace" class="badge-img" width="200" height="200" />
+      <h2>Approved Step Up For Students provider</h2>
+      <p class="lead">Your scholarship is welcome here.</p>
+      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .flow { list-style: none; counter-reset: step; padding: 0; margin: 1.5rem 0 2.5rem; display: grid; gap: 1.25rem; }
+  .flow li { counter-increment: step; position: relative; padding-left: 3.5rem; }
+  .flow li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0;
+    width: 2.4rem; height: 2.4rem;
+    display: grid; place-items: center;
+    background: var(--navy); color: var(--white);
+    border-radius: 50%; font-family: var(--font-serif); font-size: 1.2rem;
+  }
+  .flow h3 { margin-bottom: 0.25rem; }
+  .note { background: var(--cream-dark); border-left: 4px solid var(--gold); border-radius: 8px; padding: 1.25rem 1.5rem; }
+  .note p { margin: 0.5rem 0 0; color: var(--muted); }
+</style>

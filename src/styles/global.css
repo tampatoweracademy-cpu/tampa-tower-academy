@@ -1,0 +1,167 @@
+/* ============================================================
+   Tampa Tower Academy — design system
+   Palette drawn from the school crest: deep navy, heraldic gold,
+   warm cream. Mobile-first, high-contrast, minimal.
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --navy: #1c3d5a;
+  --navy-dark: #12293e;
+  --navy-deep: #0d1f2f;
+  --gold: #c6a15b;
+  --gold-light: #e2c98a;
+  --gold-dark: #a5823f;
+  --cream: #f7f5ef;
+  --cream-dark: #efeadd;
+  --ink: #1a1c20;
+  --muted: #55606b;
+  --line: #e2ddd0;
+  --white: #ffffff;
+
+  /* Type */
+  --font-serif: Georgia, 'Times New Roman', 'Iowan Old Style', serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Scale */
+  --wrap: 68rem;
+  --wrap-narrow: 46rem;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(18, 41, 62, 0.06), 0 8px 24px rgba(18, 41, 62, 0.08);
+  --shadow-lg: 0 12px 40px rgba(18, 41, 62, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  color: var(--navy-dark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--navy); text-underline-offset: 3px; }
+a:hover { color: var(--gold-dark); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Accessibility ------------------------------------------------ */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--navy-dark);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  z-index: 200;
+  border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus { left: 0; color: var(--white); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Layout ------------------------------------------------------- */
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: 1.25rem; }
+.wrap-narrow { max-width: var(--wrap-narrow); }
+
+section { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
+
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin: 0 0 0.75rem;
+}
+
+.lead { font-size: 1.2rem; color: var(--muted); }
+
+/* Buttons ------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.08s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--gold); color: var(--navy-deep); box-shadow: var(--shadow); }
+.btn-primary:hover { background: var(--gold-light); color: var(--navy-deep); }
+.btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.55); }
+.btn-ghost:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+.btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+
+/* Cards -------------------------------------------------------- */
+.grid { display: grid; gap: 1.5rem; }
+@media (min-width: 40rem) { .grid-3 { grid-template-columns: repeat(3, 1fr); } .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+}
+.card h3 { margin-top: 0.25rem; }
+.card .ico {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  background: var(--cream-dark);
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.card .ico svg { width: 24px; height: 24px; }
+
+/* Bands -------------------------------------------------------- */
+.band-navy { background: var(--navy-dark); color: var(--cream); }
+.band-navy h2 { color: var(--white); }
+.band-navy .lead { color: rgba(247, 245, 239, 0.82); }
+.band-gold { background: linear-gradient(180deg, var(--cream-dark), var(--cream)); }
+
+/* Utility ------------------------------------------------------ */
+.center { text-align: center; }
+.stack > * + * { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.badge-img { max-width: 190px; margin-inline: auto; }

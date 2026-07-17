@@ -1,0 +1,114 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href) => (href === '/' ? path === '/' : path.startsWith(href));
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/curriculum', label: 'Curriculum' },
+  { href: '/programs', label: 'Programs' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label="Tampa Tower Academy — home">
+      <img src="/images/logo.png" alt="" width="46" height="46" class="brand-mark" />
+      <span class="brand-text">
+        <strong>Tampa Tower</strong>
+        <em>Academy</em>
+      </span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        {links.map((l) => (
+          <li>
+            <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+          </li>
+        ))}
+      </ul>
+      <a class="btn btn-primary nav-cta" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 245, 239, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 68px;
+  }
+  .brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+  .brand-mark { border-radius: 6px; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1; font-family: var(--font-serif); }
+  .brand-text strong { color: var(--navy-dark); font-size: 1.15rem; letter-spacing: -0.01em; }
+  .brand-text em { color: var(--gold-dark); font-style: normal; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; }
+
+  .nav { display: flex; align-items: center; gap: 1.5rem; }
+  .nav ul { display: flex; gap: 1.35rem; list-style: none; margin: 0; padding: 0; }
+  .nav a {
+    font-weight: 600;
+    color: var(--navy-dark);
+    text-decoration: none;
+    font-size: 0.98rem;
+    padding-block: 0.35rem;
+  }
+  .nav a[aria-current='page'] { color: var(--gold-dark); box-shadow: inset 0 -2px 0 var(--gold); }
+  .nav a:hover { color: var(--gold-dark); }
+
+  .nav-burger { display: none; }
+
+  @media (max-width: 52rem) {
+    .nav-burger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      cursor: pointer;
+      background: none;
+      border: 0;
+    }
+    .nav-burger span {
+      width: 26px; height: 3px;
+      background: var(--navy-dark);
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .nav {
+      position: absolute;
+      inset: 68px 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem 1.25rem 1.25rem;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+    .nav ul { flex-direction: column; gap: 0; }
+    .nav li { border-bottom: 1px solid var(--line); }
+    .nav a { display: block; padding: 0.9rem 0; }
+    .nav-cta { margin-top: 1rem; justify-content: center; }
+    .nav-toggle:checked ~ .nav { display: flex; }
+  }
+</style>
