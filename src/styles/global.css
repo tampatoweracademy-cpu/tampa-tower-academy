@@ -165,3 +165,16 @@ section { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
 .stack > * + * { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .badge-img { max-width: 190px; margin-inline: auto; }
+
+/* White tile for partner/accreditation logos (works on light or dark bands) */
+.sufs-tile {
+  display: block;
+  width: fit-content;
+  max-width: 300px;
+  margin-inline: auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-lg);
+}
+.sufs-tile img { width: 100%; max-width: 240px; height: auto; display: block; }
