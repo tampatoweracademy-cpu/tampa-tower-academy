@@ -1,21 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Approved Provider — Step Up For Students EMA Marketplace (placeholder)">
-  <circle cx="110" cy="110" r="106" fill="#ffffff" stroke="#1c3d5a" stroke-width="3"/>
-  <circle cx="110" cy="110" r="96" fill="none" stroke="#c6a15b" stroke-width="2"/>
-  <defs>
-    <path id="top" d="M110 24 a86 86 0 0 1 0 172" fill="none"/>
-    <path id="bot" d="M28 110 a82 82 0 0 0 164 0" fill="none"/>
-  </defs>
-  <text font-family="Georgia, serif" font-size="15" font-weight="700" fill="#1c3d5a" letter-spacing="2">
-    <textPath href="#top" startOffset="14%">APPROVED PROVIDER</textPath>
-  </text>
-  <text font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1c3d5a" letter-spacing="2">
-    <textPath href="#bot" startOffset="10%">EMA MARKETPLACE</textPath>
-  </text>
-  <g transform="translate(110 108)">
-    <circle r="30" fill="none" stroke="#b23a48" stroke-width="3"/>
-    <circle cy="-14" r="6" fill="#b23a48"/>
-    <path d="M-16 14 Q0 -6 16 14" fill="none" stroke="#b23a48" stroke-width="6" stroke-linecap="round"/>
-    <text y="34" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#b23a48" text-anchor="middle">Step Up</text>
-    <text y="48" font-family="system-ui, sans-serif" font-size="8" fill="#55606b" text-anchor="middle">FOR STUDENTS</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Approved Provider — Step Up For Students, EMA Marketplace">
+  <!-- seal rings -->
+  <circle cx="110" cy="110" r="105" fill="#f7f5ef" stroke="#c6a15b" stroke-width="4"/>
+  <circle cx="110" cy="110" r="94" fill="none" stroke="#1c3d5a" stroke-width="1.5"/>
+
+  <!-- check medallion -->
+  <circle cx="110" cy="74" r="30" fill="#1c3d5a"/>
+  <circle cx="110" cy="74" r="30" fill="none" stroke="#c6a15b" stroke-width="2"/>
+  <path d="M98 74 l9 9 15 -18" fill="none" stroke="#e2c98a" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- text -->
+  <text x="110" y="126" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#1c3d5a" text-anchor="middle" letter-spacing="1.5">APPROVED PROVIDER</text>
+  <line x1="66" y1="138" x2="154" y2="138" stroke="#c6a15b" stroke-width="1.5"/>
+  <text x="110" y="160" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#1c3d5a" text-anchor="middle">Step Up For Students</text>
+  <text x="110" y="180" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#55606b" text-anchor="middle" letter-spacing="1">EMA MARKETPLACE</text>
 </svg>
