@@ -7,7 +7,7 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
   <div class="wrap cols">
     <div>
       <div class="brand">
-        <img src="/images/logo.png" alt="" width="52" height="52" />
+        <img src="/images/logo-dark.png" alt="" width="56" height="57" />
         <span>Tampa Tower Academy</span>
       </div>
       <p class="tag">A Bible-based K–8 academy in Tampa, Florida.</p>
@@ -45,7 +45,7 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
   .cols { display: grid; gap: 2rem; }
   @media (min-width: 46rem) { .cols { grid-template-columns: 1.4fr 1fr 1fr; } }
   .brand { display: flex; align-items: center; gap: 0.65rem; }
-  .brand img { background: var(--cream); border-radius: 50%; padding: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+  .brand img { filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35)); }
   .brand span { font-family: var(--font-serif); font-size: 1.2rem; color: var(--white); }
   .tag { margin-top: 0.75rem; max-width: 28ch; }
   .site-footer h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-light); font-family: var(--font-sans); margin-bottom: 0.75rem; }
