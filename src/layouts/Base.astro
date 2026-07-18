@@ -54,8 +54,12 @@ const schema = {
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={`${site}/images/logo.png`} />
+    <meta property="og:image" content={`${site}/images/og-banner.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content="Tampa Tower Academy — Bible-based K–8 academy in Tampa, Florida" />
     <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={`${site}/images/og-banner.png`} />
 
     <meta name="theme-color" content="#12293e" />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
