@@ -42,24 +42,42 @@ Dashboard → `tampatower.org` → **Email** → **Email Routing**.
    - `ycortes@tampatower.org` → `tampatowerllc@gmail.com`
    - `postmaster@tampatower.org` → `tampatowerllc@gmail.com`  ← see DMARC note below
 
-3. **Enable routing.** Cloudflare offers to add its MX records and remove the
-   conflicting Google ones. Accept. Let Cloudflare fill in the MX priorities —
-   it randomizes them per zone, so don't hand-type values from a blog post.
+3. **Delete the old Google records BEFORE adding Cloudflare's.**
 
-   ⚠️ **Cutover happens here.** Google Workspace stops receiving the moment the
-   old MX records are gone.
+   ⚠️ Email Routing → Settings → **Add missing records** *refuses to run* while any
+   non-Cloudflare MX record exists: *"Existing non-Cloudflare MX records conflict
+   with Email Routing. Remove or update them and try again."* There is no
+   merge/replace flow and no way to stage both — old must go first.
 
-4. **SPF — the #1 thing people break.** A domain may have exactly **one** SPF TXT
-   record. Cloudflare will want to add `include:_spf.mx.cloudflare.net`; Brevo will
-   want `include:spf.brevo.com` in Phase 2. Do not end up with two records.
+   In **DNS → Records**, delete six records:
+   - the five Google MX (`aspmx`, `alt1`–`alt4`)
+   - the TXT `v=spf1 include:_spf.google.com ~all`
 
-   Final merged value (set this once, in Phase 2, after Brevo is added):
+   Deleting the old SPF here is deliberate: Cloudflare adds its own SPF in step 4,
+   so removing Google's first means the zone never holds two SPF records.
+
+   **Keep** `google-site-verification` (Search Console), `google._domainkey`
+   (inert but harmless), and `_dmarc`.
+
+   ⚠️ **Cutover happens here.** Between this deletion and step 4 the domain has no
+   MX at all; senders fall back to the A record, which is the Worker and doesn't
+   speak SMTP, so mail **queues at the sender and retries** — delayed, not bounced.
+   Keep the gap to a minute or two. TTL was 300s, so the tail is ~5 minutes.
+
+4. **Email Routing → Settings → Add missing records.** The red warning should be
+   gone. Cloudflare adds three MX, its DKIM key, and its SPF record. Let it assign
+   the MX priorities — it randomizes them per zone (this zone got 12/26/40), so
+   don't hand-type values from a blog post.
+
+5. **Add Brevo to SPF.** Edit the SPF record Cloudflare just created to:
 
    ```
    v=spf1 include:_spf.mx.cloudflare.net include:spf.brevo.com ~all
    ```
 
-   `include:_spf.google.com` gets dropped — Workspace is gone.
+   Adding Brevo before the Brevo account exists is harmless and saves editing the
+   record twice. A domain may have exactly **one** SPF TXT record — two is a
+   permerror that fails all outbound auth.
 
 ---
 
@@ -144,9 +162,34 @@ Optionally set `support@tampatower.org` as the default From.
 
 ---
 
+## Verified state after Phase 1 (2026-07-21)
+
+Read from the authoritative nameserver (`huxley.ns.cloudflare.com`):
+
+```
+MX   route3.mx.cloudflare.net   12
+MX   route1.mx.cloudflare.net   26
+MX   route2.mx.cloudflare.net   40
+TXT  tampatower.org        v=spf1 include:_spf.mx.cloudflare.net include:spf.brevo.com ~all
+TXT  tampatower.org        google-site-verification=JvCvIbVl8-...
+TXT  cf2024-1._domainkey   v=DKIM1 (Cloudflare)
+TXT  google._domainkey     v=DKIM1 (stale, inert)
+TXT  _dmarc                v=DMARC1; p=none; rua=mailto:postmaster@tampatower.org
+A    tampatower.org        104.21.53.95 / 172.67.211.152 (Worker, untouched)
+```
+
+Receiving confirmed working for `support@` and `ycortes@`. Sending not yet set up
+— Phase 2 pending. Google Workspace still active and NOT yet cancelled.
+
 ## Gotchas
 
 - **One SPF record only.** Two SPF TXT records = permerror = everything fails.
+- **The DNS dashboard search box filters record *content*, not type.** Typing `txt`
+  returns a partial, misleading list and the "N of 200 records" counter goes stale
+  with it — it looked like the SPF record had been deleted when it hadn't. Use
+  **Filters → Type** instead, and confirm against public DNS before believing the
+  UI. Verify with:
+  `Resolve-DnsName tampatower.org -Type TXT -Server huxley.ns.cloudflare.com`
 - **Cloudflare Email Routing cannot send.** It is forward-only. All outbound goes
   through Brevo. There is no webmail and no IMAP — Gmail is the client.
 - **DMARC `rua` points at `postmaster@tampatower.org`**, which won't exist unless
