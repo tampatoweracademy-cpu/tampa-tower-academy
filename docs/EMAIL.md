@@ -124,9 +124,9 @@ Free plan: **300 emails/day**, SMTP relay at `smtp-relay.brevo.com:587` (STARTTL
    ⚠️ The **login is not your email address** — Brevo issues a dedicated relay
    identifier like `b2d191001@smtp-brevo.com`. Using the account email fails auth.
 
-   ⚠️ **SMTP keys default to a 1-year expiry.** Choose "No expiry" if offered;
-   otherwise the key dies on its expiry date and Gmail stops sending with an
-   unhelpful error long after anyone remembers this setup. See Open items below.
+   ⚠️ **SMTP keys default to a 1-year expiry. Choose "No expiry"** — the current
+   key was created that way. Otherwise the key dies on its expiry date and Gmail
+   stops sending with an unhelpful error long after anyone remembers this setup.
 
    The key is a password. It goes into Gmail once and nowhere else — never into a
    chat, screenshot, or commit.
@@ -221,10 +221,10 @@ Brevo records added on top of the above (all CNAMEs DNS-only, verified resolving
       from the old mailboxes via Google Takeout *first* — the archive is only
       reachable while the subscription is live. Workspace is also the rollback:
       recreating the five Google MX records restores the previous setup exactly.
-- [ ] **SMTP key expiry unconfirmed.** Brevo defaulted to 1 year (Jul 21, 2027).
-      Whether "No expiry" was selected was never verified. If it does expire,
-      Gmail sending breaks silently — check the key's expiry in Brevo → SMTP & API
-      and set a reminder, or regenerate with no expiry.
+- [x] ~~SMTP key expiry~~ — **resolved.** Brevo defaulted to 1 year (Jul 21, 2027);
+      "No expiry" was selected instead, so the key will not lapse. Anyone
+      regenerating this key later must make the same choice — the 1-year default
+      would break Gmail sending silently on its expiry date.
 - [ ] **Brevo free-tier branding on transactional relay** never tested. Send a real
       message to an outside address and read it as the recipient before using this
       for parent-facing mail.
