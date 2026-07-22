@@ -92,20 +92,44 @@ Free plan: **300 emails/day**, SMTP relay at `smtp-relay.brevo.com:587` (STARTTL
 2. **Senders, Domains & Dedicated IPs → Domains → Add domain** → `tampatower.org`
    → Authenticate.
 
-3. Brevo hands you DNS records. Add each in Cloudflare DNS **exactly as shown**:
-   - `TXT` at root — `brevo-code:<hash>` (ownership proof)
-   - `TXT` DKIM — host is usually `brevo._domainkey`, but use whatever host Brevo
-     displays; the selector has changed across Brevo generations.
-   - SPF — **do not add a second SPF record.** Edit the existing one to the merged
-     value in Phase 1 step 4.
-   - DMARC — one already exists; leave it.
+   Brevo requires a **branded subdomain** (required field, not optional). We used
+   `send` → `send.tampatower.org`. Avoid `mail`, in case that name is wanted later.
 
-4. Wait for Brevo to show the domain as authenticated (usually minutes on
-   Cloudflare DNS).
+3. Brevo hands you seven DNS records. Add **six** in Cloudflare, all CNAMEs set to
+   **DNS only** (grey cloud) — Cloudflare defaults CNAMEs to proxied, and a proxied
+   record makes Cloudflare answer with its own IPs so Brevo verification fails:
 
-5. **SMTP → SMTP & API → SMTP tab.** Copy the **login** (your Brevo account email)
-   and generate an **SMTP key**. Treat the key like a password — it goes straight
-   into Gmail in Phase 3 and nowhere else.
+   | Type | Name | Content |
+   |---|---|---|
+   | CNAME | `send` | `send-tampatower-org.brand.brevosend.com` |
+   | CNAME | `brevo1._domainkey` | `b1.tampatower-org.dkim.brevo.com` |
+   | CNAME | `brevo2._domainkey` | `b2.tampatower-org.dkim.brevo.com` |
+   | CNAME | `img.send` | `send-tampatower-org.img.brand.brevosend.com` |
+   | CNAME | `r.send` | `send-tampatower-org.r.brand.brevosend.com` |
+   | TXT | `@` | `brevo-code:14f44b9791361e9c7ff793e609681f10` |
+
+   ⚠️ **Do NOT add Brevo's seventh record**, the DMARC one
+   (`v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com`). A domain may have exactly
+   one `_dmarc` record; a second makes DMARC invalid and receivers treat the domain
+   as having no policy at all. Keep the existing `rua=mailto:postmaster@`. The only
+   loss is Brevo-side report analytics — delivery and alignment are unaffected.
+
+   Brevo also offers an SPF record. **Skip it** — SPF was already merged in Phase 1
+   step 5.
+
+4. Click **Verify records**. Confirmation is "Domain authenticated and branded".
+
+5. **SMTP & API → SMTP tab.** Note the settings and generate an **SMTP key**.
+
+   ⚠️ The **login is not your email address** — Brevo issues a dedicated relay
+   identifier like `b2d191001@smtp-brevo.com`. Using the account email fails auth.
+
+   ⚠️ **SMTP keys default to a 1-year expiry.** Choose "No expiry" if offered;
+   otherwise the key dies on its expiry date and Gmail stops sending with an
+   unhelpful error long after anyone remembers this setup. See Open items below.
+
+   The key is a password. It goes into Gmail once and nowhere else — never into a
+   chat, screenshot, or commit.
 
 ---
 
@@ -124,7 +148,7 @@ Add another email address**. Repeat for each address:
 | Treat as alias | ✅ leave checked | ✅ leave checked |
 | SMTP server | `smtp-relay.brevo.com` | same |
 | Port | `587` | same |
-| Username | Brevo SMTP login | same |
+| Username | `b2d191001@smtp-brevo.com` | same |
 | Password | Brevo SMTP key | same |
 | Security | TLS | same |
 
@@ -178,8 +202,32 @@ TXT  _dmarc                v=DMARC1; p=none; rua=mailto:postmaster@tampatower.or
 A    tampatower.org        104.21.53.95 / 172.67.211.152 (Worker, untouched)
 ```
 
-Receiving confirmed working for `support@` and `ycortes@`. Sending not yet set up
-— Phase 2 pending. Google Workspace still active and NOT yet cancelled.
+Brevo records added on top of the above (all CNAMEs DNS-only, verified resolving):
+`send`, `brevo1._domainkey`, `brevo2._domainkey`, `img.send`, `r.send`, plus the
+`brevo-code:` TXT at the apex.
+
+**Status: working end to end.**
+
+- Receiving confirmed for `support@` and `ycortes@` → `tampatowerllc@gmail.com`
+- Sending confirmed via Gmail "Send mail as" → Brevo relay
+- mail-tester.com: **8.9/10**, "You're properly authenticated" (SPF + DKIM + DMARC
+  all pass; DMARC passing proves DKIM aligns to `d=tampatower.org`), not
+  blocklisted. The −0.6 SpamAssassin / −0.5 body deductions came from the short
+  test message itself, not from domain configuration.
+
+## Open items
+
+- [ ] **Google Workspace still active and NOT cancelled.** Export anything wanted
+      from the old mailboxes via Google Takeout *first* — the archive is only
+      reachable while the subscription is live. Workspace is also the rollback:
+      recreating the five Google MX records restores the previous setup exactly.
+- [ ] **SMTP key expiry unconfirmed.** Brevo defaulted to 1 year (Jul 21, 2027).
+      Whether "No expiry" was selected was never verified. If it does expire,
+      Gmail sending breaks silently — check the key's expiry in Brevo → SMTP & API
+      and set a reminder, or regenerate with no expiry.
+- [ ] **Brevo free-tier branding on transactional relay** never tested. Send a real
+      message to an outside address and read it as the recipient before using this
+      for parent-facing mail.
 
 ## Gotchas
 
