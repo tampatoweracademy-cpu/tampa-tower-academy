@@ -51,26 +51,39 @@ subject in frame.
 
 ## Keeping files small
 
-There is no image optimizer in this project and no build-time pipeline, so file
-size is whatever you commit. Two rules cover most cases:
+Images are optimized with [sharp](https://sharp.pixelplumbing.com/) through
+one-off scripts in `scripts/` — see `process-images.mjs`, `process-logo.mjs`,
+and `process-logo-dark.mjs`. The pattern is: drop the original in `incoming/`
+(gitignored, so originals stay out of the repo), run the script, and commit the
+optimized result in `public/images/`. This is not part of `npm run build`; it is
+run by hand when an image changes.
 
-- **Photos and anything fully opaque → JPEG**, quality ~82-85. A PNG of an
-  opaque image pays for an alpha channel it never uses: `og-banner` was a
-  1192 KB PNG with zero transparent pixels and became a 164 KB JPEG at the same
-  1200x1200, with no visible difference.
-- **Logos and anything with transparency → PNG**, and shrink it by *resizing*
-  rather than re-encoding. Re-encoding a PNG through Windows GDI+ makes it
-  larger, not smaller — `logo.png` went from 239 KB to 389 KB that way, which is
-  why it is still the original file.
+`sharp` is imported by those scripts but is not listed in `package.json`, so
+install it before running one.
+
+Settings that matter:
+
+- **Photos and anything fully opaque → JPEG.** `.jpeg({ quality: 84, mozjpeg: true })`
+  is what `process-images.mjs` uses. A PNG of an opaque image pays for an alpha
+  channel it never uses: `og-banner` was a 1192 KB PNG with zero transparent
+  pixels and became a 164 KB JPEG at the same 1200x1200, with no visible
+  difference.
+- **Logos and anything transparent → PNG, with `palette: true`.**
+  `.png({ compressionLevel: 9, palette: true })` quantizes to a palette while
+  keeping alpha, and for flat logo art the saving is large. This single option
+  is the difference between the two crests: `logo.png` is generated with it and
+  is 239 KB; `logo-dark.png` is the same artwork at the same size generated
+  *without* it, and was 937 KB.
 
 Before assuming a PNG needs to stay a PNG, check whether it actually uses
 transparency; "saved as a 32-bit PNG" and "has transparent pixels" are not the
 same thing.
 
-Getting a transparent PNG genuinely small needs a real optimizer such as
-`pngquant` or `oxipng`, neither of which is set up here. `logo-dark.png` is
-416 KB and would likely land near 70 KB with one — the largest remaining win on
-the site.
+**Known drift:** `logo-dark.png` in `public/images/` is currently a 512px file
+produced outside this pipeline, not the 800px output of
+`process-logo-dark.mjs`. Adding `palette: true` to that script and re-running it
+would both fix the size properly and put the file back in sync — it needs the
+original at `incoming/IMG_0085.jpeg`.
 
 ## Images we intentionally left out
 
