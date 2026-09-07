@@ -8,9 +8,9 @@ from the site root — e.g. `public/images/logo.png` becomes
 
 | File | What it is | Used by |
 |---|---|---|
-| `logo.png` | The gold/navy Tampa Tower Academy crest. | Header brand mark, Apple touch icon, schema.org logo. |
-| `logo-dark.png` | Crest for dark backgrounds. | Home-page hero, footer. |
-| `og-banner.png` | 1200×1200 social-share banner. | Open Graph + Twitter card previews. |
+| `logo.png` | The gold/navy Tampa Tower Academy crest (transparent). | Header brand mark, Apple touch icon, schema.org logo. |
+| `logo-dark.png` | Crest for dark backgrounds (512px, transparent). | Home-page hero, footer. |
+| `og-banner.jpg` | 1200×1200 social-share banner. | Open Graph + Twitter card previews. |
 | `step-up-logo.png` | Step Up For Students provider mark. | Home page, Programs page. |
 | `biblela.jpg` | BiblEla curriculum cover shot. | Curriculum page showcase. |
 | `classroom-reading.jpg` | Students reading the ELA Bible worktext. | Curriculum page, "Our curriculum" section. |
@@ -48,6 +48,29 @@ To display a square source as a wide banner without cropping a second file, let
 CSS do it — see `.classroom-shot` in `src/pages/curriculum.astro`, which uses
 `aspect-ratio` with `object-fit: cover` and an `object-position` that keeps the
 subject in frame.
+
+## Keeping files small
+
+There is no image optimizer in this project and no build-time pipeline, so file
+size is whatever you commit. Two rules cover most cases:
+
+- **Photos and anything fully opaque → JPEG**, quality ~82-85. A PNG of an
+  opaque image pays for an alpha channel it never uses: `og-banner` was a
+  1192 KB PNG with zero transparent pixels and became a 164 KB JPEG at the same
+  1200x1200, with no visible difference.
+- **Logos and anything with transparency → PNG**, and shrink it by *resizing*
+  rather than re-encoding. Re-encoding a PNG through Windows GDI+ makes it
+  larger, not smaller — `logo.png` went from 239 KB to 389 KB that way, which is
+  why it is still the original file.
+
+Before assuming a PNG needs to stay a PNG, check whether it actually uses
+transparency; "saved as a 32-bit PNG" and "has transparent pixels" are not the
+same thing.
+
+Getting a transparent PNG genuinely small needs a real optimizer such as
+`pngquant` or `oxipng`, neither of which is set up here. `logo-dark.png` is
+416 KB and would likely land near 70 KB with one — the largest remaining win on
+the site.
 
 ## Images we intentionally left out
 
