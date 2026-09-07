@@ -36,6 +36,18 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
         </ul>
       </div>
     </div>
+
+    <div class="wrap">
+      <img
+        src="/images/classroom-reading.jpg"
+        alt="Three students reading an ELA Bible student worktext together at a classroom desk"
+        class="classroom-shot"
+        width="1600"
+        height="1600"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
   </section>
 
   <section>
@@ -112,6 +124,18 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
     background: var(--gold);
     border-radius: 50%;
     box-shadow: inset 0 0 0 3px var(--white), 0 0 0 1px var(--gold);
+  }
+
+  .classroom-shot {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center 42%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    margin-top: 2rem;
   }
 
   .lesson { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: var(--shadow); margin-top: 2rem; }
