@@ -8,17 +8,19 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
   <!-- Hero -->
   <section class="hero band-navy">
     <div class="wrap hero-inner">
-      <img src="/images/logo-dark.png" alt="Tampa Tower Academy crest" width="205" height="209" class="hero-logo" />
-      <p class="eyebrow" style="color: var(--gold-light)">Tampa, Florida · Grades K–8</p>
-      <h1>Preparing children for life — not just the state test.</h1>
+      <img src="/images/logo-dark.png" alt="Tampa Tower crest" width="205" height="209" class="hero-logo" />
+      <p class="eyebrow" style="color: var(--gold-light)">Tampa Tower · Grades K–8</p>
+      <h1>Bible-Based <span class="nowrap">K–8</span> Home Education</h1>
+      <p class="lead tagline">Strong literacy. Strong values. Purposeful learning.</p>
       <p class="lead">
-        Tampa Tower Academy is a Bible-based academy building strong readers,
-        confident thinkers, and kind leaders through real skills and real learning every day.
+        Tampa Tower provides a Bible-based K–8 Home Education Instructional Program combining
+        Florida B.E.S.T.-aligned ELA curriculum with guided instruction and academic support
+        for PEP and homeschool families.
       </p>
-      <p class="tuition-flag">100% Tuition-Free · Funded through the PEP scholarship</p>
+      <p class="tuition-flag">Approved Step Up For Students Provider · PEP Scholarship Eligible</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a>
-        <a class="btn btn-ghost" href="/curriculum">Explore our curriculum</a>
+        <a class="btn btn-primary" href="/programs">Explore Our Program</a>
+        <a class="btn btn-ghost" href={enrollUrl} target="_blank" rel="noopener">Get Started</a>
       </div>
     </div>
   </section>
@@ -28,7 +30,7 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
     <div class="wrap">
       <div class="center" style="max-width: 44rem; margin-inline: auto;">
         <p class="eyebrow">Why families choose us</p>
-        <h2>An education built around your child</h2>
+        <h2>Learning built around your child</h2>
       </div>
       <div class="grid grid-3 mt-2">
         <article class="card">
@@ -36,7 +38,7 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6a2 2 0 0 1 2-2h8l6 6v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v6h6"/></svg>
           </span>
           <h3>Grouped by skill, not by age</h3>
-          <p>Kids develop on different timelines. In our K–8 multi-age classroom we group by skill, so every child works at the right level and gets the right education.</p>
+          <p>Kids develop on different timelines. Our program is designed for flexible, multi-age learning, so every child receives instruction and practice at the right skill level.</p>
         </article>
         <article class="card">
           <span class="ico" aria-hidden="true">
@@ -56,15 +58,14 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
     </div>
   </section>
 
-  <!-- Tuition-free explainer -->
+  <!-- PEP scholarship funding explainer -->
   <section class="band-gold">
     <div class="wrap wrap-narrow center stack">
-      <p class="eyebrow">Affordability</p>
-      <h2>Genuinely tuition-free for eligible families</h2>
+      <p class="eyebrow">PEP scholarship funding</p>
+      <h2>PEP Scholarship Eligible</h2>
       <p class="lead">
-        Tampa Tower Academy is funded through Florida's Personalized Education Program (PEP)
-        scholarship with Step Up For Students. There are no application fees and no registration fees —
-        just enrollment.
+        Eligible PEP families may use available Step Up For Students scholarship funds toward approved
+        Tampa Tower Home Education Instructional Program tuition. No application or registration fees.
       </p>
       <p>
         <a class="btn btn-outline" href="/programs">How the scholarship works</a>
@@ -72,7 +73,22 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
     </div>
   </section>
 
-  <!-- Faith / mission — rotating scripture drawn from the school's materials -->
+  <!-- Curriculum + instruction -->
+  <section>
+    <div class="wrap wrap-narrow center stack">
+      <p class="eyebrow">Curriculum + instruction</p>
+      <h2>What our program includes</h2>
+      <p class="lead">
+        Tampa Tower's Home Education Instructional Program combines our proprietary Bible-based ELA
+        curriculum with guided instruction, assessments, practice, feedback, and academic support.
+      </p>
+      <p>
+        <a class="btn btn-outline" href="/curriculum">Explore our curriculum</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Faith / mission — rotating scripture drawn from the program's materials -->
   <Scripture />
 
   <!-- Approved provider band -->
@@ -82,10 +98,11 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
         <p class="eyebrow">Officially recognized</p>
         <h2>An approved Step Up For Students provider</h2>
         <p class="lead">
-          Tampa Tower Academy is an approved provider on the Step Up For Students
-          EMA Marketplace — so scholarship funds can be used for enrollment with us.
+          Tampa Tower is an approved Step Up For Students provider in the Home Education
+          Instructional Program category. Eligible scholarship funds may be used toward approved
+          Tampa Tower HEIP tuition.
         </p>
-        <a class="btn btn-outline" href="/contact">Talk to us about enrolling</a>
+        <a class="btn btn-outline" href="/contact">Meet with us</a>
       </div>
       <div class="sufs-tile">
         <img src="/images/step-up-logo.png" alt="Step Up For Students" width="520" height="520" />
@@ -97,8 +114,8 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
   <section class="band-navy center">
     <div class="wrap wrap-narrow stack">
       <h2>Ready to give your child the right start?</h2>
-      <p class="lead">Enrollment takes just a few minutes. We'd love to meet your family.</p>
-      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a></p>
+      <p class="lead">Registration takes just a few minutes. Select Tampa Tower as your provider — we'd love to meet your family.</p>
+      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Get Started</a></p>
     </div>
   </section>
 </Base>
@@ -108,6 +125,8 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
   .hero-inner { text-align: center; max-width: 46rem; margin-inline: auto; }
   .hero-logo { width: 205px; height: auto; margin: 0 auto 1.5rem; filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.35)); }
   .hero h1 { color: var(--white); }
+  .nowrap { white-space: nowrap; }
+  .tagline { font-weight: 700; color: var(--gold-light); }
   .tuition-flag {
     display: inline-block;
     margin: 0.5rem 0 1.5rem;

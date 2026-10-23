@@ -3,14 +3,15 @@ import Base from '../layouts/Base.astro';
 const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
 ---
 
-<Base title="Programs" path="/programs" description="Tampa Tower Academy programs — tuition-free K–8 education funded through Florida's PEP scholarship with Step Up For Students.">
+<Base title="Our Home Education Program" path="/programs" description="Tampa Tower's Bible-based K–8 Home Education Instructional Program — parent-led or instructor-guided learning with Florida B.E.S.T.-aligned ELA curriculum. Eligible PEP families may use scholarship funds toward approved program tuition.">
   <section class="band-navy">
     <div class="wrap wrap-narrow">
-      <p class="eyebrow" style="color: var(--gold-light)">Programs &amp; enrollment</p>
-      <h1>Tuition-free K–8, funded by scholarship.</h1>
+      <p class="eyebrow" style="color: var(--gold-light)">Our program</p>
+      <h1 style="color: var(--white)">Our Home Education Program</h1>
       <p class="lead" style="color: rgba(247,245,239,0.85)">
-        Tampa Tower Academy is an approved provider on the Step Up For Students EMA Marketplace.
-        Eligible families can attend at no cost through Florida's Personalized Education Program (PEP).
+        Tampa Tower is a Bible-based K–8 Home Education Instructional Program. We combine
+        Florida B.E.S.T.-aligned ELA curriculum with guided instruction and academic support
+        for PEP and homeschool families.
       </p>
     </div>
   </section>
@@ -21,9 +22,8 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
       <p class="eyebrow">Two ways to learn</p>
       <h2>Choose the path that fits your family.</h2>
       <p class="lead">
-        Whether you prefer to teach your own children or connect with one of our certified
-        instructors, we provide all the tools you need to succeed — built on a Bible-based ELA
-        curriculum aligned with Florida's B.E.S.T. Standards.
+        Every family uses the same Bible-based ELA curriculum aligned with Florida's B.E.S.T. Standards.
+        You choose how your child is taught.
       </p>
     </div>
     <div class="wrap grid grid-2">
@@ -31,43 +31,74 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
         <span class="ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h6a3 3 0 0 1 3 3v11a2.5 2.5 0 0 0-2.5-2.5H3Z"/><path d="M21 5h-6a3 3 0 0 0-3 3v11a2.5 2.5 0 0 1 2.5-2.5H21Z"/></svg>
         </span>
-        <h3>Teach your own children</h3>
-        <p>Lead your child's learning at home with our full curriculum, structure, and support behind you.</p>
+        <h3>Parent-Led Learning</h3>
+        <p>Families can use Tampa Tower's complete Bible-based ELA curriculum to guide learning at home with curriculum, structure, assessments, and support.</p>
       </article>
       <article class="card">
         <span class="ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
         </span>
-        <h3>Connect with a certified instructor</h3>
-        <p>Partner with one of our certified instructors who bring the curriculum to life for your child.</p>
+        <h3>Instructor-Guided Learning</h3>
+        <p>Families may choose instruction from a qualified instructor who teaches and supports students using the Tampa Tower curriculum.</p>
       </article>
+    </div>
+  </section>
+
+  <!-- Curriculum + instruction -->
+  <section>
+    <div class="wrap wrap-narrow stack">
+      <p class="eyebrow">Curriculum + instruction</p>
+      <h2>What our program includes</h2>
+      <p>
+        Tampa Tower's Home Education Instructional Program combines our proprietary Bible-based ELA
+        curriculum with guided instruction, assessments, practice, feedback, and academic support.
+      </p>
     </div>
   </section>
 
   <section class="band-gold">
     <div class="wrap wrap-narrow">
-      <h2>How the scholarship works</h2>
+      <h2>PEP Scholarship Funding</h2>
+      <p>
+        Tampa Tower is an approved Step Up For Students provider in the Home Education Instructional
+        Program category. Eligible PEP families may use available Step Up For Students scholarship funds
+        toward approved Tampa Tower Home Education Instructional Program tuition. Applicable pricing is
+        shown when you select our offering through EMA / Find Providers.
+      </p>
       <ol class="flow">
         <li>
           <h3>Apply with Step Up For Students</h3>
           <p>Families apply for the PEP scholarship through Step Up For Students. Once approved, funds are held in an education account for your child.</p>
         </li>
         <li>
-          <h3>Choose Tampa Tower Academy</h3>
-          <p>Because we're an approved provider on the EMA Marketplace, your scholarship can be used toward enrollment with us.</p>
+          <h3>Select Tampa Tower as your provider</h3>
+          <p>Because we're an approved Home Education Instructional Program provider on the EMA Marketplace, eligible scholarship funds may be used toward approved Tampa Tower HEIP tuition.</p>
         </li>
         <li>
-          <h3>Enroll your child</h3>
-          <p>Complete our short enrollment form. There are no application fees and no registration fees.</p>
+          <h3>Register for the program</h3>
+          <p>Complete our short registration form. No application or registration fees.</p>
         </li>
       </ol>
 
       <div class="note">
         <strong>Program details are being finalized.</strong>
-        <p>Full information on grade levels, schedule, class structure, and what a school day looks
+        <p>Full information on grade levels, the program schedule, and what a learning day looks
         like will be published here shortly. Have a question now? <a href="/contact">Reach out</a> —
         we're happy to help.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Learning pod / co-op — kept separate from HEIP tuition -->
+  <section>
+    <div class="wrap wrap-narrow stack">
+      <p class="eyebrow">Learning together</p>
+      <h2>Learning Together</h2>
+      <p>
+        Tampa Tower families may have opportunities to participate in a small, collaborative learning
+        pod/co-op where PEP and homeschool students can learn, practice, and socialize together.
+      </p>
+      <p class="note">Participation in the learning pod does not constitute enrollment in a private school.</p>
     </div>
   </section>
 
@@ -77,8 +108,8 @@ const enrollUrl = 'https://forms.gle/GSf12Znbd63fsDfk7';
         <img src="/images/step-up-logo.png" alt="Step Up For Students" width="520" height="520" />
       </div>
       <h2>Approved Step Up For Students provider</h2>
-      <p class="lead">Your scholarship is welcome here.</p>
-      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Enroll now</a></p>
+      <p class="lead">PEP Scholarship Eligible · Home Education Instructional Program</p>
+      <p><a class="btn btn-primary" href={enrollUrl} target="_blank" rel="noopener">Get Started</a></p>
     </div>
   </section>
 </Base>
